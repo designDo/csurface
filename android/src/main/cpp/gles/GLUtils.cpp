@@ -4,7 +4,7 @@
 extern "C" {
 #endif
 
-GLuint createProgram(const char *vertexShader, const char *fragmentShader){
+GLuint createProgram(const char *vertexShader, const char *fragmentShader) {
     GLuint vertex;
     GLuint fragment;
     GLuint program;
@@ -54,6 +54,8 @@ GLuint loadShader(GLenum type, const char *shaderSrc) {
     GLuint shader;
     GLint compiled;
     GLchar info;
+    GLsizei buffer = 1024;
+    GLsizei length;
     // 创建shader
     shader = glCreateShader(type);
     if (shader == 0) {
@@ -66,7 +68,8 @@ GLuint loadShader(GLenum type, const char *shaderSrc) {
     // 检查编译状态
     glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
     if (!compiled) {
-        //glGetShaderInfoLog(shader, 1024,1024, &info);
+        glGetShaderInfoLog(shader, buffer, &length, &info);
+        LOGD("Shader Complete Error", info);
         glDeleteShader(shader);
         return 0;
     }
