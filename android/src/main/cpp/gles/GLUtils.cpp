@@ -53,6 +53,7 @@ GLuint createProgram(const char *vertexShader, const char *fragmentShader){
 GLuint loadShader(GLenum type, const char *shaderSrc) {
     GLuint shader;
     GLint compiled;
+    GLchar info;
     // 创建shader
     shader = glCreateShader(type);
     if (shader == 0) {
@@ -65,6 +66,7 @@ GLuint loadShader(GLenum type, const char *shaderSrc) {
     // 检查编译状态
     glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
     if (!compiled) {
+        //glGetShaderInfoLog(shader, 1024,1024, &info);
         glDeleteShader(shader);
         return 0;
     }
