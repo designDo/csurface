@@ -1,6 +1,6 @@
 # csurface
 
-A new Flutter project.
+Flutter插件Demo, 使用OpenGL 渲染一个 红色的三角形到 一个 SurfaceTexture上, Flutter使用 Texture 外部纹理承载渲染. 
 
 ## Getting Started
 
